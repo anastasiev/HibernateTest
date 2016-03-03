@@ -19,7 +19,34 @@ public class UserDetails {
     private String description;
 
     @Embedded
-    private Address address;
+    @AttributeOverrides({
+            @AttributeOverride(name="street", column = @Column(name="HOME_STREET_NAME")),
+            @AttributeOverride(name="city", column = @Column(name="HOME_CITY_NAME")),
+            @AttributeOverride(name="state", column = @Column(name="HOME_STATE_NAME")),
+            @AttributeOverride(name="pincode", column = @Column(name="HOME_PIN_CODE"))
+    })
+    private Address homeAddress;
+
+    @Embedded
+    private Address officeAddress;
+
+    public Address getOfficeAddress() {
+        return officeAddress;
+    }
+
+    public void setOfficeAddress(Address officeAddress) {
+        this.officeAddress = officeAddress;
+    }
+
+    public Address getHomeAddress() {
+        return homeAddress;
+    }
+
+    public void setHomeAddress(Address homeAddress) {
+        this.homeAddress = homeAddress;
+    }
+
+
 
     @Transient
     private int transietField;
@@ -41,13 +68,6 @@ public class UserDetails {
         this.joinDate = joinDate;
     }
 
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
 
     public String getDescription() {
         return description;
