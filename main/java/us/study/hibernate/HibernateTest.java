@@ -23,7 +23,7 @@ public class HibernateTest {
         address.setCity("Kyiv");
         address.setPincode("0163");
         address.setState("NY");
-        address.setStrit("myStreet");
+        address.setStreet("myStreet");
         userDetails.setAddress(address);
 
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
